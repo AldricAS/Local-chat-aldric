@@ -25,4 +25,152 @@
             width: 400px;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        /* Judul */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Bagian pesan */
+        .messages {
+            margin-bottom: 20px;
+            height: 200px;
+            overflow-y: scroll;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+
+        /* Input pesan dan tombol */
+        .input-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .input-container input {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .input-container button {
+            width: 15%;
+            padding: 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .input-container button:hover {
+            background-color: #45a049;
+        }
+
+        /* Pengaturan */
+        .settings {
+            margin-top: 20px;
+        }
+
+        .settings input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .settings button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #2196F3;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .settings button:hover {
+            background-color: #1e88e5;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h1>Chatting Lokal</h1>
+        
+        <!-- Bagian Pesan -->
+        <div class="messages" id="messages">
+            <!-- Pesan akan muncul di sini -->
+        </div>
+        
+        <!-- Bagian Input Pesan -->
+        <div class="input-container">
+            <input type="text" id="messageInput" placeholder="Ketik pesan...">
+            <button onclick="sendMessage()">Kirim</button>
+        </div>
+
+        <!-- Bagian Pengaturan -->
+        <div class="settings">
+            <button onclick="toggleSettings()">Pengaturan</button>
+            <div id="settingsMenu" style="display: none;">
+                <label for="username">Nama:</label>
+                <input type="text" id="username" placeholder="Masukkan nama">
+                <label for="token">Token Teman:</label>
+                <input type="text" id="token" placeholder="Masukkan token teman">
+                <button onclick="addFriend()">Tambah Teman</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mengirim pesan
+        function sendMessage() {
+            var messageInput = document.getElementById('messageInput');
+            var messages = document.getElementById('messages');
+
+            // Ambil pesan dari input dan buat elemen pesan baru
+            var messageText = messageInput.value.trim();
+            if (messageText !== '') {
+                var newMessage = document.createElement('div');
+                newMessage.textContent = messageText;
+                messages.appendChild(newMessage);
+                
+                // Mengscroll ke pesan terakhir
+                messages.scrollTop = messages.scrollHeight;
+                
+                // Bersihkan input pesan setelah dikirim
+                messageInput.value = '';
+            }
+        }
+
+        // Menampilkan atau menyembunyikan menu pengaturan
+        function toggleSettings() {
+            var settingsMenu = document.getElementById('settingsMenu');
+            if (settingsMenu.style.display === 'none') {
+                settingsMenu.style.display = 'block';
+            } else {
+                settingsMenu.style.display = 'none';
+            }
+        }
+
+        // Menambahkan teman berdasarkan token
+        function addFriend() {
+            var token = document.getElementById('token').value.trim();
+            if (token !== '') {
+                alert('Teman dengan token ' + token + ' telah ditambahkan.');
+                document.getElementById('token').value = ''; // Bersihkan input token
+            }
+        }
+    </script>
+</body>
+</html>
