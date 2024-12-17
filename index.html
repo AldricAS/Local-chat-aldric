@@ -1,46 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Local Chatting App</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatting Lokal</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="chat-container">
-    <header>
-      <h1>Local Chat</h1>
-      <button class="settings-button" id="settingsButton">Settings</button>
-    </header>
+    <div class="chat-container">
+        <h1>Chatting Lokal</h1>
+        <div class="messages" id="messages">
+            <!-- Pesan akan muncul di sini -->
+        </div>
+        
+        <div class="input-container">
+            <input type="text" id="messageInput" placeholder="Ketik pesan...">
+            <button onclick="sendMessage()">Kirim</button>
+        </div>
 
-    <div class="settings" id="settingsSection">
-      <h3>Settings</h3>
-      <p>Your Token: <span id="tokenDisplay"></span></p>
-      <input type="text" id="nameInput" placeholder="Enter your name" />
-      <button id="setNameButton">Set Name</button>
-      <p>Your Name: <span id="userNameDisplay"></span></p>
-      <input type="text" id="friendTokenInput" placeholder="Enter friend's token" />
-      <button id="addFriendButton">Add Friend</button>
-      <p>Enter token to remove friend:</p>
-      <input type="text" id="removeFriendTokenInput" placeholder="Friend's token to remove" />
-      <button id="removeFriendButton">Remove Friend</button>
+        <div class="settings">
+            <button onclick="toggleSettings()">Pengaturan</button>
+            <div id="settingsMenu" style="display: none;">
+                <label for="username">Nama:</label>
+                <input type="text" id="username" placeholder="Masukkan nama">
+                <label for="token">Token Teman:</label>
+                <input type="text" id="token" placeholder="Masukkan token teman">
+                <button onclick="addFriend()">Tambah Teman</button>
+            </div>
+        </div>
     </div>
 
-    <div class="friends-list" id="friendsList">
-      <h3>My Friends:</h3>
-      <!-- Daftar teman akan ditampilkan di sini -->
-    </div>
-
-    <div class="chat-box" id="chatBox">
-      <!-- Pesan-pesan akan ditampilkan di sini -->
-    </div>
-
-    <div class="input-box">
-      <input type="text" id="messageInput" placeholder="Type a message..." />
-      <button id="sendButton">Send</button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
